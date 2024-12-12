@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lb-api-deployment
+  labels:
+    app: lb-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lb-api
+  template:
+    metadata:
+      labels:
+        app: lb-api
+    spec:
+      containers:
+      - name: lb-api
+        image: 192.168.0.105:5061/lb-api:cdaca05
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
