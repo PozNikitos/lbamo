@@ -1,3 +1,4 @@
+import socket
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -8,10 +9,15 @@ items = [
     {"id": 2, "name": "Item 2", "description": "Description for item 2"}
 ]
 
+HOSTNAME = socket.gethostname()
+
 # Получить все элементы
 @app.route('/items', methods=['GET'])
 def get_items():
-    return jsonify(items), 200
+    return jsonify({
+        "hostname": HOSTNAME,
+        "items": items
+    }), 200
 
 # Получить элемент по ID
 @app.route('/items/<int:item_id>', methods=['GET'])
