@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: lb-api
-        image: 192.168.0.105:5061/lb-api:cdaca05
+        image: 192.168.0.105:5061/lb-api:ce79786
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
